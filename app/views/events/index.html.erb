@@ -1,6 +1,8 @@
 <h1>All Events</h1>
 <% @events.each do |event| %>
   <ul>
-    <li><%= event.title %></li>
+    <li><%= event.title %>
+    <%= link_to "Details", event %>
+    </li>
   </ul>
 <% end %>
