@@ -10,9 +10,22 @@
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign Up", sign_up_path, class: "nav-link" %>
+          <%= link_to "New Event", new_event_path, class: "nav-link" %>
         </li>
-      </ul>
-    </div>
-  </div>
+        <% if current_user %>
+        <li class="nav-item">
+          <%= button_to "Log Out", sign_out_path, method: :delete,  class: "nav-link btn btn-primary" %>
+        </li>
+      <% end %>
+      <% if !current_user %>
+      <li class="nav-item">
+        <%= link_to "Sign Up", sign_up_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign In", sign_in_path, class: "nav-link" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+</div>
 </nav>

@@ -1,0 +1,21 @@
+<%= form_with model: @user, url: sign_up_path do |f| %>
+  <div class="mb-4">
+    <%= f.label :username, class: "form-label" %>
+    <%= f.text_field :username, class: "form-control" %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :email, class: "form-label" %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :password, class: "form-label" %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :password_confirmation, class: "form-label" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="mb-4">
+    <%= f.submit "Sign Up", class: "btn btn-primary" %>
+  </div>
+<% end %>
