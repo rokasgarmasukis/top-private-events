@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     if helpers.logged_in?
-      @user_attended_events = helpers.current_user.attended_events.select(:id).all
+      @user_attended_events = helpers.current_user.attended_events.pluck(:id)
     end
   end
 

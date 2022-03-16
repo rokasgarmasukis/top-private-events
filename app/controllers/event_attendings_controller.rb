@@ -6,6 +6,11 @@ class EventAttendingsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    event_attending = EventAttending.find_by(attended_event_id: params[:id])
+    event_attending.destroy
+    redirect_to root_path, notice: "Opted out"
+  end
 
 
 end
