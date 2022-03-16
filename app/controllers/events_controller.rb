@@ -1,9 +1,11 @@
 class EventsController < ApplicationController
-  include ApplicationHelper
   before_action :require_login, except: :index
 
   def index
     @events = Event.all
+    if helpers.logged_in?
+      @user_attended_events = helpers.current_user.attended_events.select(:id).all
+    end
   end
 
   def new
@@ -11,7 +13,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.created_events.build(event_params)
+    @event = helpers.current_user.created_events.build(event_params)
 
     if @event.save
       redirect_to root_path, notice: "Event created successfully"
@@ -41,6 +43,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    event = Event.find_by(id: params[:id])
+    event.destroy
+    redirect_to root_path, notice: "Event deleted"
+  end
+
   private
 
   def require_login
@@ -50,6 +58,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :content)
+    params.require(:event).permit(:title, :content, :datetime)
   end
 end

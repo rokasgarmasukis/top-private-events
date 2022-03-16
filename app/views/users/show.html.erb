@@ -1,0 +1,14 @@
+<h3>Username: <%= @user.username %></h3>
+<h3>Created Events</h3>
+<ul>
+<% @user.created_events.each do |event| %>
+<li>Event: <%= event.title %>, <%= link_to "Show", event %></li>
+<% end %>
+</ul>
+
+<h3>Attended Events</h3>
+<ul>
+<% @user.attended_events.each do |event| %>
+<li>Event: <%= event.title %>, <%= link_to "Show", event %></li>
+<% end %>
+</ul>

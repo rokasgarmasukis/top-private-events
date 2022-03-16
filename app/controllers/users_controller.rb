@@ -1,4 +1,4 @@
-class RegistrationsController < ApplicationController
+class UsersController < ApplicationController
   def new
     @user = User.new
   end
@@ -12,6 +12,10 @@ class RegistrationsController < ApplicationController
       flash.now[:alert] = "Invalid input"
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @user = helpers.current_user
   end
 
   private

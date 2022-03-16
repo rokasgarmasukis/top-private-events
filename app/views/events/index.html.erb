@@ -1,8 +1,40 @@
-<h1>All Events</h1>
-<% @events.each do |event| %>
-  <ul>
-    <li><%= event.title %>
-    <%= link_to "Details", event %>
-    </li>
-  </ul>
+<% if logged_in? %>
+<% @user_attended_events.each do |id| %>
+<%= id.id %>
 <% end %>
+<% end %>
+
+<% if logged_in? %>
+  <h1>Welcome, <%= current_user.username %></h1>
+<% else %>
+  <h1>Welcome</h1>
+<% end %>
+<div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xxl-3 g-4">
+  <% @events.each do |event| %>
+    <div class="col">
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.content %></p>
+          <p class="card-text"><%= event.datetime %></p>
+          <div style="display: flex; flex-direction: row g-4">
+            <%= link_to "Details", event, class: "btn btn-primary" %>
+            <%# If User logged in %>
+            <% if logged_in? %>
+            <%# If event not attended, display button to attend, otherwise, display button to opt-out of event %>
+            <% if %>
+              <%= button_to "Attend", event_attendings_path(id: event.id), method: :post, class: "btn btn-primary", style: "margin: 0 1rem" %>
+            <% else %>
+
+            <% end %>
+              <%# if user is creator of event, display button to delete it %>
+              <% if current_user.id == event.creator_id %>
+                <%= button_to "Delete", event_path(event.id), method: :delete, class: "btn btn-danger", style: "margin: 0 1rem" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
