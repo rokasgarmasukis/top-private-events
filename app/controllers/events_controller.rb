@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :require_login, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @events = Event.all
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    redirect_to root_path if @event.creator_id != current_user.id
+    unauthorized_redirect if @event.creator_id != current_user.id
   end
 
   def update

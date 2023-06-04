@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'events#index'
 
-  resources :events
-
   get '/user', to: 'user#show'
+
+  resources :events
+  resources :event_attendences, only: %i[create destroy]
 end
