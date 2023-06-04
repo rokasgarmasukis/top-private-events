@@ -1,0 +1,103 @@
+:root {
+  --red: #e45055;
+  --brown: #eaac8b;
+  --dark: #355070;
+  --violet: #6d597a;
+  --pink: #b56576;
+  --serif: 'DM Serif Display', serif;
+  --sans: 'DM Sans', sans-serif;
+  --font-size: 1.2rem;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--sans);
+  font-size: var(--font-size);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+a {
+  color: var(--dark);
+}
+
+a:hover {
+  color: var(--red);
+}
+
+/* navbar */
+nav {
+  font-family: var(--sans);
+  padding: 1rem;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8rem;
+}
+
+nav a {
+  text-decoration: none;
+  display: block;
+}
+
+nav .sessions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* forms */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+form .field,
+form .actions {
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+textarea,
+datetime-local {
+  font-family: inherit;
+  font-size: 90%;
+  padding: 5px;
+  margin: 0;
+  border: 1px solid var(--dark);
+  border-radius: 5px;
+  width: 250px;
+  background: white;
+}
+
+button {
+}
+
+textarea {
+  resize: none;
+}
