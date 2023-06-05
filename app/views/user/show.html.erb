@@ -1,10 +1,21 @@
-<% if @events.length == 0 %>
-  No events yet
+<% if @created_events.length == 0 %>
+  You haven't created any events yet.
 <% else %>
   My created events:
   <ul>
-    <% @events.each do |event| %>
-      <li><%= event.title %>: <%= link_to "Edit", edit_event_path(event) %></li>
+    <% @created_events.each do |event| %>
+      <li><%= event.title %>: <%= link_to "See details", event_path(event) %> <%= link_to "Edit", edit_event_path(event) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @attended_events.length == 0 %>
+  you do not attend any events yet.
+<% else %>
+  My attended events:
+  <ul>
+    <% @attended_events.each do |event| %>
+      <li><%= event.title %>: <%= link_to "See details", event_path(event) %></li>
     <% end %>
   </ul>
 <% end %>

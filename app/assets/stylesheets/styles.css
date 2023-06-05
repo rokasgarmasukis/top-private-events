@@ -28,8 +28,13 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+p {
   margin: 0;
+}
+
+h2 {
+    font-family: var(--serif)
 }
 
 a {
@@ -38,6 +43,15 @@ a {
 
 a:hover {
   color: var(--red);
+}
+
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 2rem 1rem;
+    gap: 2rem;
+    align-items: center;
 }
 
 /* navbar */
@@ -54,8 +68,21 @@ nav ul {
   flex-flow: row wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 8rem;
+  gap: 1rem;
+  /* gap: 8rem; */
 }
+
+@media (min-width: 440px) {
+  nav .sessions {
+    margin-left: 4rem;
+  }
+}
+
+@media (min-width: 700px) {
+    nav .sessions {
+      margin-left: 8rem;
+    }
+  }
 
 nav a {
   text-decoration: none;
@@ -67,33 +94,76 @@ nav .sessions {
   gap: 1.5rem;
 }
 
-/* cards */
-.container {
-    display: flex;
-    padding: 1rem 3rem;
-    padding-top: 4rem;
-    gap: 2rem;
-    flex-flow: row wrap;
-    justify-content: center;
+/* buttons */
+
+a.link-button {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    color: var(--violet)
 }
 
+a.link-button:hover {
+    color: var(--red)
+}
+
+
+/*  */
+
+.new-event {
+    margin: 0 auto;
+}
+
+.new-event .link-button {
+    padding: 10px 30px;
+}
+
+/* cards */
+.cards-container {
+  display: flex;
+  gap: 2rem;
+  flex-flow: row wrap;
+  justify-content: center;
+}
 
 .card {
-    flex-basis: 300px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    border: 1px solid #eee;
-    padding: 3rem;
-    border-radius: 10px;
-    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  flex-basis: 260px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  border: 1px solid #eee;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 
 @media (min-width: 440px) {
     .card {
-        flex-basis: 400px;
+      flex-basis: 400px;
     }
+  }
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
 }
 
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+}
+
+.card .link-button {
+    align-self: end;
+}
 
 /* forms */
 
@@ -136,8 +206,8 @@ input[type='submit']:hover {
 }
 
 input[type='checkbox'] {
-    width: 10px;
-  }
+  width: 10px;
+}
 
 textarea {
   resize: none;

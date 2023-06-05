@@ -1,4 +1,6 @@
-<%= link_to "Create new event", new_event_path %>
-<div class="container">
-  <%= render @events %>
+<div class="new-event">
+<%= link_to "Create new event", new_event_path, class: "link-button" %>
+</div>
+<div class="cards-container">
+<%= render @events %>
 </div>

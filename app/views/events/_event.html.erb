@@ -1,8 +1,12 @@
 <div class="card">
-  <h2><%= event.title %></h2>
-  <p>By: <%= event.creator.username %>. Description: <%= event.description %></p>
-  <p>Location: <%= event.location %></p>
-  <p>Date & time: <%= event.date_time %></p>
-  <p>Attendees: <%= event.attendees.length %></p>
-  <%= link_to "See details", event_path(event) %>
+  <div class="card-content">
+    <h2><%= event.title %></h2>
+    <p>By: <%= event.creator.username %>. Description: <%= event.description %></p>
+    <p>Location: <%= event.location %></p>
+    <p>Date & time: <%= event.date_time %></p>
+    <p>Attendees: <%= event.attendees.length %></p>
+  </div>
+  <div class="card-actions">
+    <%= link_to "See details", event_path(event), class: "link-button" %>
+  </div>
 </div>
