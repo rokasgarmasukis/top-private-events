@@ -101,12 +101,15 @@ a.link-button {
     border: 1px solid #eee;
     border-radius: 5px;
     text-decoration: none;
-    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    /* box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06); */
     color: var(--violet)
 }
 
+a.link-button:focus,
 a.link-button:hover {
-    color: var(--red)
+    color: var(--dark);
+    background: #f7fbff
+    
 }
 
 
@@ -118,6 +121,7 @@ a.link-button:hover {
 
 .new-event .link-button {
     padding: 10px 30px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
 /* cards */

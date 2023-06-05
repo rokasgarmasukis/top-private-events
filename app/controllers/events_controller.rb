@@ -10,7 +10,11 @@ class EventsController < ApplicationController
 
     event_attendee_ids = @event.attendees.map(&:id)
 
-    @current_user_attends = event_attendee_ids.include?(current_user.id) ? true : false
+    if current_user 
+      @current_user_attends = event_attendee_ids.include?(current_user.id) ? true : false
+    else
+      @current_user_attends = nil
+    end
   end
 
   def new
