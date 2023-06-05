@@ -1,7 +1,8 @@
 <div class="card">
   <h2><%= event.title %></h2>
-  <p><%= event.description %></p>
-
-  <%# <%= button_to "Attend event", event_attendences_path(event_attendence: {attended_event_id: event.id, event_attendee_id: current_user.id}), data: {turbo_method: :post} %>
-  <%# <%= button_to "Do not attend", event_attendence_path(event_attendence: {attended_event_id: event.id, event_attendee_id: current_user.id}), data: {turbo_method: :delete} %>
+  <p>By: <%= event.creator.username %>. Description: <%= event.description %></p>
+  <p>Location: <%= event.location %></p>
+  <p>Date & time: <%= event.date_time %></p>
+  <p>Attendees: <%= event.attendees.length %></p>
+  <%= link_to "See details", event_path(event) %>
 </div>

@@ -1,4 +1,25 @@
 <h2><%= @event.title %></h2>
-<p><%= @event.description %></p>
-<p><%= @event.location %></p>
-<p><%= @event.date_time %></p>
+<p>Event creator: <%= @event.creator.username %></p>
+<p>Description: <%= @event.description %></p>
+<p>Location: <%= @event.location %></p>
+<p>Date & time: <%= @event.date_time %></p>
+<% if user_signed_in? %>
+  <% if @current_user_attends %>
+    <%= link_to "Do not attend", event_attendence_path(event_attendence: {event_attendee_id: current_user.id, attended_event_id: @event.id}), data: {turbo_method: "delete"} %>
+  <% else %>
+    <%= link_to "Attend", event_attendences_path(event_attendence: {event_attendee_id: current_user.id, attended_event_id: @event.id}), data: {turbo_method: "post"}%>
+  <% end %>
+<% else %>
+  Log in to be able to attend.
+<% end %>
+<p>Attendees (<%= @event.attendees.length %>):</p>
+<ul>
+  <% if user_signed_in? %>
+    <% @event.attendees.each do |attendee| %>
+      <li><%= attendee.username %></li>
+    <% end %>
+  <% else %>
+    <li>Log in too see who attends.</li>
+  <% end %>
+</ul>
+<%= link_to "Go back", root_path %>

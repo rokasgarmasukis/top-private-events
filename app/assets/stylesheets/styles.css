@@ -67,6 +67,34 @@ nav .sessions {
   gap: 1.5rem;
 }
 
+/* cards */
+.container {
+    display: flex;
+    padding: 1rem 3rem;
+    padding-top: 4rem;
+    gap: 2rem;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+
+.card {
+    flex-basis: 300px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border: 1px solid #eee;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 440px) {
+    .card {
+        flex-basis: 400px;
+    }
+}
+
+
 /* forms */
 
 form {
@@ -89,14 +117,27 @@ datetime-local {
   font-size: 90%;
   padding: 5px;
   margin: 0;
-  border: 1px solid var(--dark);
+  border: 1px solid #eee;
+  /* border: 0; */
   border-radius: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   width: 250px;
   background: white;
 }
 
-button {
+input[type='submit'] {
+  background: var(--violet);
+  color: #eee;
 }
+
+input[type='submit']:hover {
+  background: var(--dark);
+  color: #eee;
+}
+
+input[type='checkbox'] {
+    width: 10px;
+  }
 
 textarea {
   resize: none;

@@ -2,11 +2,15 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @events = Event.all
+    @events = Event.all.includes(:creator, :attendees)
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.includes(:attendees).find(params[:id])
+
+    event_attendee_ids = @event.attendees.map(&:id)
+
+    @current_user_attends = event_attendee_ids.include?(current_user.id) ? true : false
   end
 
   def new
